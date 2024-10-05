@@ -40,17 +40,30 @@ func (list *linkelist) display() {
 }
 
 func (list *linkelist) removeDuplicates() {
+	if list.head == nil {
+		fmt.Println("list is emty")
+		return
+	}
+	temp := list.head
 
+	for temp.next != nil {
+		if temp.value == temp.next.value {
+			temp.next = temp.next.next
+		} else {
+			temp = temp.next
+		}
+
+	}
 }
 
 func main() {
 	list := linkelist{}
+	list.add(1)
 	list.add(2)
-	list.add(2)
-	list.add(3)
-	list.add(4)
 	list.add(4)
 	list.add(5)
+	list.add(5)
+
 	list.removeDuplicates()
 	list.display()
 }
