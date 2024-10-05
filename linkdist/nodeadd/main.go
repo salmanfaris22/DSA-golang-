@@ -108,6 +108,16 @@ func (list *linkelist) display() {
 
 }
 
+func (list *linkelist) reversedisplay(node *Node) {
+
+	if node == nil {
+		return
+	}
+	list.reversedisplay(node.next)
+	fmt.Printf("%d ->", node.number)
+
+}
+
 func main() {
 	list := linkelist{}
 	list.insertLast(3)
@@ -117,8 +127,9 @@ func main() {
 	list.insertLast(2)
 	// list.insertFirst(1011)
 	list.display()
-	list.delistspeceficNode(120)
-	list.display()
+	// list.delistspeceficNode(120)
+	fmt.Printf("\n")
+	list.reversedisplay(list.head)
 	// list.deliteLast()
 	// list.display()
 	// list.deletfirst()
