@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Node struct {
 	number int
@@ -57,21 +59,69 @@ func (list *linkelist) deliteLast() {
 	}
 
 }
+
+func (list *linkelist) delistspeceficNode(num int) {
+
+	if list.head == nil {
+		fmt.Println("pleas enter node")
+		return
+	}
+
+	if list.head.number == num {
+		list.head = list.head.next
+		return
+	}
+
+	temp := list.head
+	for temp.next.number != num {
+		temp = temp.next
+
+		if temp.next == nil {
+			fmt.Println("\n", num, "this number not find in this linkedlist", "\n")
+			return
+		}
+	}
+	fmt.Println(temp)
+	temp.next = temp.next.next
+
+}
+
+func (list *linkelist) deletfirst() {
+
+	if list.head == nil {
+		fmt.Println("pleas enter node")
+
+	} else {
+		temp := list.head
+		list.head = temp.next
+	}
+
+}
+
 func (list *linkelist) display() {
+	fmt.Printf("\n")
 	temp := list.head
 	for temp != nil {
 		fmt.Printf("%d ->", temp.number)
 		temp = temp.next
 	}
+
 }
 
 func main() {
 	list := linkelist{}
 	list.insertLast(3)
+	list.insertLast(30)
+	list.insertLast(13)
 	list.insertLast(10)
-	list.insertLast(15)
-
-	list.deliteLast()
-
+	list.insertLast(2)
+	// list.insertFirst(1011)
 	list.display()
+	list.delistspeceficNode(120)
+	list.display()
+	// list.deliteLast()
+	// list.display()
+	// list.deletfirst()
+	// list.display()
+
 }
