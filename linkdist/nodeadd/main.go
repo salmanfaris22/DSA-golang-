@@ -37,6 +37,26 @@ func (list *linkelist) insertFirst(num int) {
 	list.head = newNode
 }
 
+func (list *linkelist) deliteLast() {
+
+	if list.head == nil {
+		fmt.Println("pleas enter node")
+
+	} else if list.head.next == nil {
+		list.head = nil
+
+	} else {
+		temp := list.head
+
+		for temp.next.next != nil {
+
+			temp = temp.next
+		}
+		temp.next = nil
+
+	}
+
+}
 func (list *linkelist) display() {
 	temp := list.head
 	for temp != nil {
@@ -50,7 +70,8 @@ func main() {
 	list.insertLast(3)
 	list.insertLast(10)
 	list.insertLast(15)
-	list.insertFirst(300)
-	list.insertFirst(10)
+
+	list.deliteLast()
+
 	list.display()
 }
