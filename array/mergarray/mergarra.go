@@ -16,7 +16,7 @@ func mergaArray(arr, arr1 []int) []int {
 
 	newarr := arr
 	for i := 0; i < len(arr1); i++ {
-		newarr = append(newarr, arr1[i])
+		
 	}
 	return newarr
 }
