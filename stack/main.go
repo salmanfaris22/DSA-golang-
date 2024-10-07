@@ -64,11 +64,7 @@ func (stack *Stack) Peek() (int, error) {
 	return stack.content[len(stack.content)-1], nil
 }
 func (stack *Stack) IsEmpty() bool {
-	if len(stack.content) != 0 {
-		return false
-	} else {
-		return true
-	}
+	return len(stack.content) == 0
 
 }
 func (stack *Stack) Size() int {
