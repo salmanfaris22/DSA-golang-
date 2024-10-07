@@ -7,6 +7,8 @@ func main() {
 	s.Push(2)
 	s.Push(12)
 	s.Push(10)
+	deleted := s.Pop()
+	fmt.Println("items delited :", deleted)
 	s.Display()
 }
 
@@ -19,4 +21,11 @@ func (stack *Stack) Display() {
 }
 func (stack *Stack) Push(num int) {
 	stack.content = append(stack.content, num)
+}
+func (stack *Stack) Pop() int {
+	lastIndex := len(stack.content) - 1
+	lastItem := stack.content[lastIndex]
+	stack.content = stack.content[:lastIndex]
+
+	return lastItem
 }
