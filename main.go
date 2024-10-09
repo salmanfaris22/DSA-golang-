@@ -3,46 +3,57 @@ package main
 import "fmt"
 
 type Node struct {
-	data int
 	next *Node
+
+	val int
 }
 
-type linkelist struct {
+type linkedlist struct {
 	head *Node
 }
 
-func (list *linkelist) insert(num int) {
-
-	newNode := &Node{
-		data: num,
-		next: nil,
-	}
-	if list.head == nil {
-		list.head = newNode
-	} else {
-		newNode.next = list.head
-		list.head = newNode
-	}
-
-}
-
-func (list *linkelist) display() {
-
+func (list *linkedlist) Push(num int) {
 	temp := list.head
 
-	for temp != nil {
-		fmt.Printf("%d->", temp.data)
+	newNode := &Node{
+		val: num,
+	}
+	if temp == nil {
+		temp = newNode
+
+	}
+	for temp.next != nil {
 		temp = temp.next
 	}
 
+	temp.next = newNode
+
+}
+
+func display(head *Node) {
+	temp := head
+	for temp != nil {
+		fmt.Println("lkmk")
+		fmt.Printf("%d ->", temp.val)
+		temp = temp.next
+	}
+}
+
+var ll = linkedlist{}
+
+func arrayToLinkedList(arr []int) *Node {
+
+	for _, v := range arr {
+		ll.Push(v)
+	}
+
+	return ll.head
 }
 
 func main() {
-	list := linkelist{}
-	list.insert(4)
-	list.insert(23)
-	list.insert(411)
-	list.insert(10)
-	list.display()
 
+	arr := []int{1, 2, 3, 4, 5}
+	head := arrayToLinkedList(arr)
+
+	display(head)
 }
