@@ -19,21 +19,21 @@ func (list *linkedlist) Push(num int) {
 		val: num,
 	}
 	if temp == nil {
-		temp = newNode
+		list.head = newNode
+		//fmt.Println("salmn")
+	} else {
 
+		for temp.next != nil {
+			temp = temp.next
+		}
+		temp.next = newNode
 	}
-	for temp.next != nil {
-		temp = temp.next
-	}
-
-	temp.next = newNode
 
 }
 
 func display(head *Node) {
 	temp := head
 	for temp != nil {
-		fmt.Println("lkmk")
 		fmt.Printf("%d ->", temp.val)
 		temp = temp.next
 	}
